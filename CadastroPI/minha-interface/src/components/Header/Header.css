@@ -1,0 +1,52 @@
+.header{
+    display: flex;
+    Justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #fef6e4;
+}
+
+.header-left{
+    display: flex;
+    align-items: center;
+    gap: 15px
+}
+
+.logo{
+    width: 60px;
+    height: auto;
+}
+
+.company-name{
+    font-weight: 700;
+    font-size: 1.0rem;
+    color: #000000;
+}
+
+.header-nav {
+  display: flex;
+  gap: 80px; /* espaçamento entre os links */
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
+  transition: color 0.3s;
+  margin-left: 40px; /* remove margin para evitar conflito */
+}
+
+.link-doacoes {
+  color: #f9a826; /* cor que você quiser */
+}
+
+
+.header-nav a:hover {
+  color: #f9a826;
+}
+
+.active-link {
+  color: #f9a826;
+  font-weight: bold;
+  border-bottom: 3px solid #f9a826;
+}

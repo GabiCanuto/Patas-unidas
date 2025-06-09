@@ -1,0 +1,28 @@
+.pata {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  animation: flutuar 8s infinite ease-in-out;
+}
+
+@keyframes flutuar {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.patinhas-background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 0; /* atrás */
+  pointer-events: none; /* para não atrapalhar cliques */
+}

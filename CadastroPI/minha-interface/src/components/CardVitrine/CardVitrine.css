@@ -1,0 +1,75 @@
+.vitrine-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.vitrine-card {
+  position: relative;
+  width: 270px;
+  height: 380px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+}
+
+.vitrine-card:hover {
+  transform: translateY(-5px);
+}
+
+.vitrine-card-nome {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px; /* distancia maior abaixo do nome */
+  align-self: flex-start; /* empurra o nome para cima, alinhado à esquerda */
+  width: 100%;
+  text-align: center; /* centraliza o texto do nome */
+  transition: opacity 0.3s ease;
+}
+
+.vitrine-card:hover .vitrine-card-nome {
+  opacity: 0;
+}
+
+/* Imagem quadrada, sem bordas arredondadas, centralizada verticalmente */
+.vitrine-card-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0; /* sem bordas arredondadas */
+  margin: auto; /* centraliza vertical e horizontalmente */
+  transition: opacity 0.3s ease;
+}
+
+.vitrine-card:hover .vitrine-card-img {
+  opacity: 0;
+}
+
+/* Texto do hover centralizado */
+.vitrine-card-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  opacity: 0;
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  text-align: left;
+  line-height: 1.6;  /* espaçamento entre linhas */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.vitrine-card:hover .vitrine-card-info {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
