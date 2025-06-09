@@ -1,0 +1,57 @@
+.titulo-page{
+   font-size: 24px;
+   text-align: center;
+   margin-top: 60px;
+   font-size: 30px !important;
+}
+
+.paragrafo{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 25px !important;
+}
+
+.container-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+}
+
+.titulo-page {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.paragrafo {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.pagamento-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.patinhas-background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pagamento-conteudo {
+  position: relative;
+  z-index: 1;
+}
+
+.conteudo-entre-header-footer {
+  margin-top: 100px; /* Ajuste esse valor para subir ou descer o conteúdo */
+}

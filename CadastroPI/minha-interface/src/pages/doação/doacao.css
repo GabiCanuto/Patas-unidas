@@ -1,0 +1,146 @@
+.doacao-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap; /* para melhor responsividade */
+}
+
+/* Cards com estilo base */
+.form-doacao-container,
+.info-doacao-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: width 0.3s ease;
+}
+
+/* Remove borda roxa do form */
+.form-doacao-container {
+  border: none;
+}
+
+/* Largura padrão para ambos os cards na etapa 0 */
+.doacao-section.step-0 .form-doacao-container,
+.doacao-section.step-0 .info-doacao-container {
+  width: 600px;
+  flex-shrink: 0;
+}
+
+/* Na etapa 1 (ou outras), form maior e info escondido */
+.doacao-section.step-1 .form-doacao-container {
+  width: 900px;
+  max-width: 100%;
+}
+
+.doacao-section.step-1 .info-doacao-container {
+  display: none;
+}
+
+/* Ajuste na imagem para acompanhar largura do card */
+.img-cachorros {
+  width: 100%;
+  max-width: 580px; /* um pouco menor que o card */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Inputs ocupam todo espaço */
+.input-doacao {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  margin: 1rem 0;
+  box-sizing: border-box;
+}
+
+/* Botões de apadrinhamento */
+.botoes-apadrinhamento {
+  display: flex;
+  justify-content: flex-start; /* mantém alinhamento à esquerda */
+  gap: 3rem; /* aumentei o espaçamento para 3rem */
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* Removi .botoes-direita para unificar os botões em um container só */
+/* Se ainda usar, pode ajustar assim: */
+.botoes-direita {
+  display: flex;
+  justify-content: center;
+  gap: 3rem; /* espaçamento maior */
+}
+
+/* Estilo base dos botões */
+.btn-voltar,
+.btn-opcao {
+  width: 140px; /* tamanho fixo */
+  min-width: unset;
+  padding: 0.6rem 1.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  background-color: #6a2893;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Botão "Continuar" maior */
+.btn-continuar {
+  min-width: 220px !important; /* força largura maior */
+  padding: 0.6rem 2.4rem;
+  font-size: 1.2rem;
+}
+
+/* Hover dos botões */
+.btn-voltar:hover,
+.btn-opcao:hover,
+.btn-continuar:hover {
+  background-color: #4a0072;
+}
+
+/* Centralização dos botões */
+.botoes-apadrinhamento,
+.botoes-direita {
+  display: flex;
+  justify-content: center;
+  gap: 3rem; /* espaçamento maior */
+}
+
+/* Responsividade para telas menores que 600px */
+@media (max-width: 600px) {
+  .form-doacao-container,
+  .info-doacao-container {
+    width: 90% !important; /* força largura para 90% */
+    padding: 1.5rem;
+    max-width: none;
+  }
+
+  .btn-avancar {
+    width: 100%;
+  }
+
+  /* Botões com largura automática para caber melhor */
+  .btn-voltar,
+  .btn-opcao,
+  .btn-continuar {
+    width: auto;
+    min-width: unset;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+
+  /* Ajusta espaçamento dos botões em telas pequenas */
+  .botoes-apadrinhamento,
+  .botoes-direita {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

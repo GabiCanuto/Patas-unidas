@@ -1,0 +1,46 @@
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  z-index: 1;
+}
+
+.circle.active {
+  background-color: #7C428F;
+}
+
+.line {
+  width: 60px;
+  height: 4px;
+  background-color: #ccc;
+  margin: 0 8px;
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+
+.line.active {
+  background-color: #7C428F;
+}
+

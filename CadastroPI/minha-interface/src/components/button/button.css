@@ -1,0 +1,20 @@
+.custom-button {
+  background-color: #6a2c91; /* Roxo do layout */
+  color: white;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #571f7b;
+}
+
+.custom-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

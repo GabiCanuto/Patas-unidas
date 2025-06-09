@@ -1,0 +1,294 @@
+.formulario-pagamento {
+  max-width: 800px; /* largura máxima */
+  width: 90%; /* responsivo */
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 16px;
+  box-sizing: border-box;
+  text-align: center; /* centraliza títulos e textos */
+}
+
+.opcoes-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center; /* centraliza os botões */
+}
+
+.opcao-pagamento {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centraliza conteúdo dentro do botão */
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  border: 2px solid #444;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 600px; /* ocupa toda a largura do container pai */
+  max-width: 600px; /* limite máximo de largura */
+  box-sizing: border-box;
+}
+
+.opcao-pagamento:hover {
+  background-color: #f3f3f3;
+}
+
+.opcao-pagamento span {
+  flex: 1;
+}
+
+.opcao-pagamento svg {
+  font-size: 1.5rem;
+}
+
+.opcao-pagamento.selecionado {
+  border-color: #7C428F;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.pix-info {
+  margin-top: 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.qrcode-container {
+  margin: 1rem 0;
+}
+
+.qrcode-container img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+.chave-pix-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.chave-pix-container input {
+  width: 250px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  user-select: all; /* facilita a seleção para copiar */
+}
+
+.chave-pix-container button {
+  padding: 0.5rem 1rem;
+  background-color: #7C428F;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.chave-pix-container button:hover {
+  background-color: #431546;
+}
+
+/* Container do ícone e texto para recarregar QR code */
+.recarregar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 1rem;
+  user-select: none;
+}
+
+.icone-recarregar {
+  transition: transform 0.3s ease;
+}
+
+.recarregar-container:hover .icone-recarregar {
+  transform: rotate(90deg);
+}
+
+.texto-recarregar {
+  margin-top: 0.5rem;
+  color: #7C428F;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.metodo-info {
+  max-width: 600px;
+  width: 650px;
+  margin: 2rem auto 0 auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-left: -40px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left; /* alinha textos à esquerda */
+}
+
+/* Título do método com texto em uma linha e ícone maior */
+.metodo-info h3 {
+  white-space: nowrap; /* mantém texto em uma linha */
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #7C428F;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.metodo-info h3 svg {
+  font-size: 2.2rem; /* ícone maior */
+  flex-shrink: 0;
+}
+
+/* Número do cartão maior */
+.numero-cartao input {
+  font-size: 1.3rem;
+  padding: 1rem 1.2rem;
+  background-color: #f9f9fb; /* fundo mais claro */
+  border: 1.5px solid #ccc;
+  border-radius: 0;
+}
+
+/* Linha com campos lado a lado */
+.form-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Campos pequenos para data e cvc */
+.form-group.pequeno {
+  flex: 1;
+}
+
+/* Campos normais */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
+.form-group label {
+  text-align: left;
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 0;
+  background-color: #f9f9fb; /* fundo mais claro */
+  transition: border-color 0.3s ease;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #7C428F;
+  box-shadow: 0 0 6px rgba(126, 63, 242, 0.3);
+  background-color: #fff; /* clareia mais no foco */
+}
+
+/* Container país para alinhar label e select */
+.pais-container label {
+  display: flex;
+  align-items: center;
+}
+
+/* Checkbox discreto */
+.checkbox-discreto {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-discreto input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Resumo da doação discreto */
+.resumo-doacao {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+/* Total destacado */
+.total-pagamento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+.total-pagamento strong {
+  color: #7C428F;
+}
+
+/* Botão finalizar */
+.btn-finalizar {
+  background-color: #7C428F;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-finalizar:hover {
+  background-color: #431546;
+}
