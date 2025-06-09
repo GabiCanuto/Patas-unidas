@@ -1,0 +1,59 @@
+.vitrine-card-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  opacity: 0;
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  text-align: left;
+  line-height: 1.6;  /* espaçamento entre linhas */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.Cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 45px; /* espaçamento horizontal */
+  row-gap: 50px;    /* aumentei o espaçamento vertical */
+  max-width: 1200px;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 49px;
+}
+
+
+.paginacao-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.paginacao {
+  display: flex;
+  gap: 8px;
+}
+
+.paginacao button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginacao button:disabled {
+  cursor: default;
+  color: #ccc;
+}
+
+.paginacao button:hover:not(:disabled) {
+  color: #000;
+}
+
+.paginacao svg {
+  display: block;
+}
