@@ -3,19 +3,24 @@
   justify-content: center; /* centraliza horizontalmente */
   gap: 70px; /* espaço entre os filtros */
   background: transparent;
-  padding: 10px 0;
   margin-top: 20px;
+  padding: 8px 20px 8px 12px;
 }
 
 .filtros-container select {
-  font-size: 1.0rem;
-  padding: 8px 12px;
+  font-size: 1rem;
+  padding: 8px 16px 8px 12px; /* padding-right ajustado */
   border: none;
   border-radius: 6px;
-  background: transparent; /* fundo totalmente transparente */
+  background: transparent;
   color: #333;
   cursor: pointer;
   outline: none;
+
+  /* Remove a seta nativa */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .filtros-container select:hover,

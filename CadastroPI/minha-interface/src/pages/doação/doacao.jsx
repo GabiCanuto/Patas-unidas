@@ -1,16 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/footer/Footer";
 import Stepper from "../../components/Stepper/Stepper";
 import PatasAleatorias from "../../components/patinhas/patasAleatorias";
 import FormularioPagamento from "../../components/FormularioPagamento/FormularioPagamento";
 import "./doacao.css";
+import vitrine from "../Vitrine/Vitrine";
 
 import imgCachorros from "../../assets/cachorro-doacao.png";
 
 export default function Doacao() {
   const [currentStep, setCurrentStep] = useState(0);
   const steps = ["Doação", "Apadrinhamento", "Pagamento", "Confirmação"];
+  const navigate = useNavigate();
+
+  // Função para atualizar o passo ao clicar no Stepper
+  const handleStepClick = (stepIndex) => {
+    setCurrentStep(stepIndex);
+  };
 
   return (
     <div className="pagamento-wrapper">
@@ -23,7 +31,8 @@ export default function Doacao() {
 
         <div className={`conteudo-entre-header-footer doacao-section step-${currentStep}`}>
           <div className="form-doacao-container">
-            <Stepper steps={steps} currentStep={currentStep} />
+            {/* Passa a função handleStepClick para o Stepper */}
+            <Stepper steps={steps} currentStep={currentStep} onStepClick={handleStepClick} />
 
             {currentStep === 0 && (
               <>
@@ -67,7 +76,7 @@ export default function Doacao() {
                   </button>
                   <button
                     className="btn-opcao"
-                    onClick={() => setCurrentStep(2)}
+                    onClick={() => navigate("/vitrine")}
                   >
                     Sim
                   </button>

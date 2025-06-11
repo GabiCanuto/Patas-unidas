@@ -93,9 +93,10 @@
 
 /* Botão "Continuar" maior */
 .btn-continuar {
+  height: 45px;
   min-width: 220px !important; /* força largura maior */
   padding: 0.6rem 2.4rem;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 }
 
 /* Hover dos botões */

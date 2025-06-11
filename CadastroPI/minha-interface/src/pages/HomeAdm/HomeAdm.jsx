@@ -41,10 +41,10 @@ export default function HomeAdm() {
           <img src={logo} alt="Logo Patas Unidas" />
         </div>
         <div className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Vitrine</a>
-          <a href="#">Doações</a>
-          <a href="#" onClick={irParaCadastro}>Cadastro</a>
+          <a href="/home-adm">Home</a>
+          <a href="/vitrine">Vitrine</a>
+          <a href="/pagamento">Doações</a>
+          <a href="/register" onClick={irParaCadastro}>Cadastro</a>
         </div>
       </nav>
 

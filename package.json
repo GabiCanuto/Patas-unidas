@@ -1,7 +1,10 @@
 {
   "dependencies": {
+    "@headlessui/react": "^2.2.4",
+    "@heroicons/react": "^2.2.0",
     "lucide-react": "^0.511.0",
     "react-loader-spinner": "^6.1.6",
+    "react-select": "^5.10.1",
     "swiper": "^11.2.7"
   }
 }

@@ -287,21 +287,25 @@ html, body {
   font-weight: 700;
   color: #7C428F;
   margin-bottom: 3vw;
+  text-align: center;
 }
 
 .feedbacks-section .swiper-slide {
   display: flex !important;
   justify-content: center;
+  align-items: center;
 }
 
 .feedbacks-section .feedback-item {
-  width: 60%;
+  width: 1000px;
   margin: 0 auto;
   font-size: clamp(0.9rem, 1.1vw, 1.1rem);
   line-height: 1.6;
   opacity: 0.85;
-  text-align: left;
+  text-align: center;
   color: #3c3c3c;
+  align-items: center;
+  margin-left: 137px;
 }
 
 .footer {
