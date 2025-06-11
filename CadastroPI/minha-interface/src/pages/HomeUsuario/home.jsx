@@ -47,10 +47,10 @@ export default function HomeUsuario() {
           <img src={logo} alt="Logo Patas Unidas" />
         </div>
         <div className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Vitrine</a>
-          <a href="#">Doações</a>
-          <a href="#" onClick={irParaCadastro}>Cadastro</a>
+          <a href="/home">Home</a>
+          <a href="/Register">Vitrine</a>
+          <a href="/Register">Doações</a>
+          <a href="/Register" onClick={irParaCadastro}>Cadastro</a>
         </div>
       </nav>
 

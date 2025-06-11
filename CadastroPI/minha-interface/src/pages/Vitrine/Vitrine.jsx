@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import Header from '../../components/Header/Header';
@@ -12,7 +13,9 @@ import './Vitrine.css';
 
 import cachorros from '../../Data/cachorro';
 
-export default function Vitrine() {
+export default function Apadrinhamento() {
+  const navigate = useNavigate();
+
   const [filtros, setFiltros] = useState({
     sexo: '',
     porte: '',
@@ -24,13 +27,13 @@ export default function Vitrine() {
 
   const itensPorPagina = 8;
 
-  function atualizarFiltro(campo, valor) {
+  const atualizarFiltro = useCallback((campo, valor) => {
     setFiltros(prev => ({
       ...prev,
       [campo]: valor,
     }));
     setPaginaAtual(1);
-  }
+  }, []);
 
   const dadosFiltrados = cachorros.filter(item => {
     const correspondeSexo = filtros.sexo ? item.sexo === filtros.sexo : true;
@@ -53,13 +56,17 @@ export default function Vitrine() {
   const indiceFinal = indiceInicial + itensPorPagina;
   const dadosPaginados = dadosFiltrados.slice(indiceInicial, indiceFinal);
 
-  function paginaAnterior() {
+  const paginaAnterior = useCallback(() => {
     setPaginaAtual(prev => Math.max(prev - 1, 1));
-  }
+  }, []);
 
-  function proximaPagina() {
+  const proximaPagina = useCallback(() => {
     setPaginaAtual(prev => Math.min(prev + 1, totalPaginas));
-  }
+  }, [totalPaginas]);
+
+  const handleCardClick = useCallback((cachorro) => {
+    navigate('/apadrinhamento', { state: { cachorroSelecionado: cachorro } });
+  }, [navigate]);
 
   return (
     <>
@@ -70,12 +77,27 @@ export default function Vitrine() {
           placeholder="Pesquisar"
           onChange={e => setBusca(e.target.value)}
           value={busca}
+          aria-label="Pesquisar cachorros"
         />
         <Filtro filtros={filtros} atualizarFiltro={atualizarFiltro} />
-        <div className="Cards-grid">
+        <div className="Cards-grid" role="list">
           {dadosPaginados.length > 0 ? (
             dadosPaginados.map(item => (
-              <CardVitrine key={item.id} data={item} />
+              <div
+                key={item.id}
+                onClick={() => handleCardClick(item)}
+                style={{ cursor: 'pointer' }}
+                role="listitem"
+                tabIndex={0}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleCardClick(item);
+                  }
+                }}
+                aria-label={`Ver detalhes do cachorro ${item.nome}`}
+              >
+                <CardVitrine data={item} />
+              </div>
             ))
           ) : (
             <p>Nenhum item encontrado</p>
@@ -83,17 +105,24 @@ export default function Vitrine() {
         </div>
 
         {totalPaginas > 1 && (
-        <div className="paginacao-wrapper">
-  <div className="paginacao">
-    <button onClick={paginaAnterior} disabled={paginaAtual === 1} aria-label="Página anterior">
-      <ChevronLeft size={36} />
-    </button>
-    <button onClick={proximaPagina} disabled={paginaAtual === totalPaginas} aria-label="Próxima página">
-      <ChevronRight size={36} />
-    </button>
-  </div>
-</div>
-
+          <nav className="paginacao-wrapper" aria-label="Navegação de páginas">
+            <div className="paginacao">
+              <button
+                onClick={paginaAnterior}
+                disabled={paginaAtual === 1}
+                aria-label="Página anterior"
+              >
+                <ChevronLeft size={36} />
+              </button>
+              <button
+                onClick={proximaPagina}
+                disabled={paginaAtual === totalPaginas}
+                aria-label="Próxima página"
+              >
+                <ChevronRight size={36} />
+              </button>
+            </div>
+          </nav>
         )}
       </div>
       <Footer />

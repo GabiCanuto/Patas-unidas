@@ -1,23 +1,36 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/footer/Footer";
 import Stepper from "../../components/Stepper/Stepper";
 import PatasAleatorias from "../../components/patinhas/patasAleatorias";
 import FormularioPagamento from "../../components/FormularioPagamento/FormularioPagamento";
-import "./doacao.css";
-import vitrine from "../Vitrine/Vitrine";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
 import imgCachorros from "../../assets/cachorro-doacao.png";
+import "./doacao.css";
 
 export default function Doacao() {
-  const [currentStep, setCurrentStep] = useState(0);
-  const steps = ["Doação", "Apadrinhamento", "Pagamento", "Confirmação"];
+  const location = useLocation();
   const navigate = useNavigate();
 
-  // Função para atualizar o passo ao clicar no Stepper
+  const cachorroSelecionado = location.state?.cachorroSelecionado || null;
+
+  const [currentStep, setCurrentStep] = useState(0);
+  const [pagamentoSucesso, setPagamentoSucesso] = useState(null);
+  const steps = ["Doação", "Apadrinhamento", "Pagamento", "Confirmação"];
+
   const handleStepClick = (stepIndex) => {
     setCurrentStep(stepIndex);
+  };
+
+  const handlePagamentoResultado = (sucesso) => {
+    setPagamentoSucesso(sucesso);
+    setCurrentStep(3);
+  };
+
+  const handleVoltarConfirmacao = () => {
+    setCurrentStep(2);
   };
 
   return (
@@ -31,12 +44,31 @@ export default function Doacao() {
 
         <div className={`conteudo-entre-header-footer doacao-section step-${currentStep}`}>
           <div className="form-doacao-container">
-            {/* Passa a função handleStepClick para o Stepper */}
-            <Stepper steps={steps} currentStep={currentStep} onStepClick={handleStepClick} />
+            <Stepper
+              steps={steps}
+              currentStep={currentStep}
+              onStepClick={handleStepClick}
+            />
 
             {currentStep === 0 && (
               <>
                 <h2 className="titulo-doacao">Faça sua doação</h2>
+
+                {cachorroSelecionado && (
+                  <div className="cachorro-imagem-container" style={{ marginBottom: "1rem" }}>
+                    <img
+                      src={cachorroSelecionado.imagem}
+                      alt={cachorroSelecionado.nome}
+                      style={{
+                        width: "100%",
+                        maxHeight: "400px",
+                        objectFit: "cover",
+                        borderRadius: "12px",
+                      }}
+                    />
+                  </div>
+                )}
+
                 <input
                   type="number"
                   placeholder="Insira um valor"
@@ -46,10 +78,7 @@ export default function Doacao() {
                 />
                 <p className="valor-min">Valor mínimo: R$5,00</p>
                 <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "2rem" }}>
-                  <button
-                    className="btn-opcao btn-continuar"
-                    onClick={() => setCurrentStep(1)}
-                  >
+                  <button className="btn-opcao btn-continuar" onClick={() => setCurrentStep(1)}>
                     Continuar
                   </button>
                 </div>
@@ -68,22 +97,13 @@ export default function Doacao() {
                 </div>
 
                 <div className="botoes-apadrinhamento">
-                  <button
-                    className="btn-voltar"
-                    onClick={() => setCurrentStep(0)}
-                  >
+                  <button className="btn-voltar" onClick={() => setCurrentStep(0)}>
                     Voltar
                   </button>
-                  <button
-                    className="btn-opcao"
-                    onClick={() => navigate("/vitrine")}
-                  >
+                  <button className="btn-opcao" onClick={() => navigate("/vitrine")}>
                     Sim
                   </button>
-                  <button
-                    className="btn-opcao"
-                    onClick={() => setCurrentStep(2)}
-                  >
+                  <button className="btn-opcao" onClick={() => setCurrentStep(2)}>
                     Não
                   </button>
                 </div>
@@ -93,22 +113,34 @@ export default function Doacao() {
             {currentStep === 2 && (
               <FormularioPagamento
                 onVoltar={() => setCurrentStep(1)}
-                onContinuar={() => setCurrentStep(3)}
+                onContinuar={() => handlePagamentoResultado(true)}
+                onFalha={() => handlePagamentoResultado(false)}
               />
             )}
 
             {currentStep === 3 && (
-              <div className="etapa-confirmacao">
-                <h2>Confirmação</h2>
-                <p>Obrigado por sua doação e interesse! Sua ajuda faz toda a diferença.</p>
-                <button className="btn-voltar" onClick={() => setCurrentStep(2)}>
+              <div className="etapa-confirmacao card-confirmacao">
+                {pagamentoSucesso ? (
+                  <>
+                    <FaCheckCircle size={100} color="#4BB543" />
+                    <h2>Pagamento realizado com sucesso!</h2>
+                    <p>Obrigado por sua doação e interesse! Sua ajuda faz toda a diferença.</p>
+                  </>
+                ) : (
+                  <>
+                    <FaTimesCircle size={100} color="#FF4C4C" />
+                    <h2>Pagamento falhou</h2>
+                    <p>Houve um problema ao processar seu pagamento. Por favor, tente novamente.</p>
+                  </>
+                )}
+                <button className="btn-voltar" onClick={handleVoltarConfirmacao}>
                   Voltar
                 </button>
               </div>
             )}
           </div>
 
-          {currentStep === 0 && (
+          {currentStep === 0 && !cachorroSelecionado && (
             <div className="info-doacao-container">
               <h3>Como sua doação ajuda nossos pets?</h3>
               <p>

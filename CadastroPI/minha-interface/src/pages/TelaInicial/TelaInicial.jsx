@@ -13,12 +13,12 @@ import adoteIcon from '../../assets/icon-adote.png';
 import doacaoIcon from '../../assets/icon-doacao.png';
 import patinha from '../../assets/patinha.png';
 import mulherComCachorro from '../../assets/mulherComCachorro.png';
-
 import footerImg from '../../assets/footer.png';
 
- // IMPORTAÇÃO ADICIONADA
+// Verifique se esse componente existe ou remova a linha
+import PatasAleatorias from '../../components/patinhas/patasAleatorias'; 
 
-export default function HomeAdm() {
+export default function TelaInicial() {
   const navigate = useNavigate();
 
   const irParaCadastro = () => {
@@ -26,9 +26,7 @@ export default function HomeAdm() {
   };
 
   return (
-    // ADICIONADO style para posição relativa e minHeight para as patinhas de background
     <div className="home-usuario-container" style={{ position: 'relative', minHeight: '100vh' }}>
-      {/* Patinhas animadas em background */}
       <PatasAleatorias quantidade={15} />
 
       <div className="patinhas-decorativas">
@@ -42,19 +40,17 @@ export default function HomeAdm() {
           <img src={logo} alt="Logo Patas Unidas" />
         </div>
         <div className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Vitrine</a>
-          <a href="#">Doações</a>
+          <a href="/tela-inicial">Home</a>
+          <a href="/vitrine">Vitrine</a>
+          <a href="/pagamento">Doações</a>
           <a href="#" onClick={irParaCadastro}>Cadastro</a>
         </div>
       </nav>
 
       <section className="main-section">
         <div className="text-section">
-          <h1>Olá amigo!
-              Seja bem-vindo!</h1>
-          <p>Estava esperando
-por você.</p>
+          <h1>Olá amigo! Seja bem-vindo!</h1>
+          <p>Estava esperando por você.</p>
         </div>
         <div className="image-section">
           <img src={dogImage} alt="Cachorro feliz" />
@@ -122,18 +118,10 @@ por você.</p>
         <div className="footer-content">
           <h3 className="footer-title">Nossos contatos</h3>
           <div className="footer-icons">
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FaInstagram color="#fff" size={24} />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <FaFacebookF color="#fff" size={24} />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-              <FaTwitter color="#fff" size={24} />
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-              <FaWhatsapp color="#fff" size={24} />
-            </a>
+            <a href="#" aria-label="Instagram"><FaInstagram color="#fff" size={24} /></a>
+            <a href="#" aria-label="Facebook"><FaFacebookF color="#fff" size={24} /></a>
+            <a href="#" aria-label="Twitter"><FaTwitter color="#fff" size={24} /></a>
+            <a href="#" aria-label="WhatsApp"><FaWhatsapp color="#fff" size={24} /></a>
           </div>
         </div>
       </footer>

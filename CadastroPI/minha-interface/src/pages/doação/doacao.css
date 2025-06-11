@@ -12,7 +12,6 @@
   background: #fff;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   transition: width 0.3s ease;
 }
@@ -36,6 +35,26 @@
 }
 
 .doacao-section.step-1 .info-doacao-container {
+  display: none;
+}
+
+/* Na etapa 2, form maior */
+.doacao-section.step-2 .form-doacao-container {
+  width: 900px;
+  max-width: 100%;
+}
+
+.doacao-section.step-2 .info-doacao-container {
+  display: none;
+}
+
+/* Na etapa 3, form maior */
+.doacao-section.step-3 .form-doacao-container {
+  width: 900px;
+  max-width: 100%;
+}
+
+.doacao-section.step-3 .info-doacao-container {
   display: none;
 }
 
@@ -115,7 +134,7 @@
 }
 
 /* Responsividade para telas menores que 600px */
-@media (max-width: 600px) {
+@media (max-width: 600) {
   .form-doacao-container,
   .info-doacao-container {
     width: 90% !important; /* força largura para 90% */

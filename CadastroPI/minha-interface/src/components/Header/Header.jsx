@@ -18,7 +18,7 @@ export default function Header() {
 
       <nav className='header-nav'>
         <NavLink 
-          to="/home" 
+          to="/tela-inicial" 
           className={({ isActive }) => isActive ? 'active-link' : ''}
         >
           Home
@@ -30,7 +30,7 @@ export default function Header() {
           Vitrine
         </NavLink>
         <NavLink 
-          to="/doacao" 
+          to="/pagamento" 
           className={() => isDoacoesActive ? 'active-link' : ''}
         >
           Doações
