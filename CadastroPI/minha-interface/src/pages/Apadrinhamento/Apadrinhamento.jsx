@@ -16,6 +16,8 @@ export default function Apadrinhamento() {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [pagamentoSucesso, setPagamentoSucesso] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const steps = ["Apadrinhamento", "Pagamento", "Confirmação"];
 
   const handleStepClick = (stepIndex) => {
@@ -53,8 +55,6 @@ export default function Apadrinhamento() {
       </div>
 
       <main className="apadrinhamento-conteudo" style={{ paddingTop: "80px" }}>
-        {/* paddingTop para evitar sobreposição do Header, ajuste conforme altura do Header */}
-
         <div className={`apadrinhamento-conteudo-entre-header-footer apadrinhamento-step${currentStep}`}>
           <Stepper
             steps={steps}
@@ -108,11 +108,45 @@ export default function Apadrinhamento() {
 
           {currentStep === 1 && (
             <div className="apadrinhamento-card-info">
+              <h2>Apadrinhamento</h2>
+              <h3>{cachorroSelecionado.nome}</h3>
+              <p>Valor mensal: R$ {cachorroSelecionado.valorApadrinhamento},00</p>
+
               <FormularioPagamento
+                valorApadrinhamento={cachorroSelecionado.valorApadrinhamento}
                 onVoltar={() => setCurrentStep(0)}
                 onContinuar={() => handlePagamentoResultado(true)}
                 onFalha={() => handlePagamentoResultado(false)}
               />
+
+              <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                <button
+                  onClick={() => setShowModal(true)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#7C428F', // Cor roxa
+                    textDecoration: 'underline',
+                    cursor: 'pointer',
+                    fontSize: '1rem',
+                    padding: 0,
+                  }}
+                >
+                  O que é apadrinhamento?
+                </button>
+              </div>
+
+              {showModal && (
+                <div className="modal-overlay" onClick={() => setShowModal(false)}>
+                  <div className="modal-content" onClick={e => e.stopPropagation()}>
+                    <h2>O que é Apadrinhamento?</h2>
+                    <p>
+                      Apadrinhar um pet significa oferecer suporte financeiro mensal para garantir alimentação, cuidados veterinários e muito amor para o animal. É uma forma de ajudar sem precisar levar o pet para casa, mas fazendo toda a diferença na vida dele.
+                    </p>
+                    <button onClick={() => setShowModal(false)}>Fechar</button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

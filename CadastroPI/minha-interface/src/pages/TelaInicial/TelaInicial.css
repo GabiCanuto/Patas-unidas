@@ -310,7 +310,8 @@ body, html {
   line-height: 1.6;        /* Espaçamento suave */
   opacity: 0.85;           /* Levemente mais claro */
   text-align: left;        /* Alinha o texto reto à esquerda */
-  color: #3c3c3c;          /* Tom escuro suave */
+  color: #3c3c3c; 
+  margin-left: 120px !important;         /* Tom escuro suave */
 }
 
 /* FOOTER */
@@ -357,7 +358,7 @@ body, html {
 }
 
 .footer-icons a:hover {
-  color: #7C428F;
+  color: #431546;
 }
 
 /* Ajuste para as bolinhas do Swiper ficarem roxas */

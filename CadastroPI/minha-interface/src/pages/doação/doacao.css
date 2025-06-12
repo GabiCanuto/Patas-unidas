@@ -1,9 +1,10 @@
 .doacao-section {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente */
   gap: 2rem;
   padding: 2rem;
-  flex-wrap: wrap; /* para melhor responsividade */
+  flex-wrap: nowrap;       /* impede quebra de linha */
 }
 
 /* Cards com estilo base */
@@ -104,7 +105,7 @@
   cursor: pointer;
   font-weight: bold;
   text-align: center;
-  background-color: #6a2893;
+  background-color: #7C428F;
   color: white;
   border: none;
   transition: background-color 0.3s ease;

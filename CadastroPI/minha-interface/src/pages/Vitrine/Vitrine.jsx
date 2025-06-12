@@ -25,7 +25,7 @@ export default function Apadrinhamento() {
   const [busca, setBusca] = useState('');
   const [paginaAtual, setPaginaAtual] = useState(1);
 
-  const itensPorPagina = 8;
+  const itensPorPagina = 12;
 
   const atualizarFiltro = useCallback((campo, valor) => {
     setFiltros(prev => ({

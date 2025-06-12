@@ -7,7 +7,9 @@ const cachorros = [
     cor: 'Preto', 
     img: '/assets/doguinho1.jpg', 
     comportamento: 'Brincalhão e ativo',
-    resumo: 'Tobias é um filhote preto, cheio de energia e muito brincalhão. Ideal para famílias que buscam um companheiro ativo e alegre.' },
+    resumo: 'Tobias é um filhote preto, cheio de energia e muito brincalhão. Ideal para famílias que buscam um companheiro ativo e alegre.',
+    valorApadrinhamento: 50
+  },
 
   { id: 2, nome: 'Mel', 
     sexo: 'Fêmea', 
@@ -16,7 +18,9 @@ const cachorros = [
     cor: 'Marrom', 
     img: '/assets/doguinho2.jpg', 
     comportamento: 'Muito dócil e carinhosa',
-    resumo: 'Mel é uma cadela adulta de porte médio, muito dócil e carinhosa, perfeita para quem quer um amigo tranquilo e afetuoso.' },
+    resumo: 'Mel é uma cadela adulta de porte médio, muito dócil e carinhosa, perfeita para quem quer um amigo tranquilo e afetuoso.',
+    valorApadrinhamento: 70
+  },
 
   { id: 3, nome: 'Thor',
      sexo: 'Macho', 
@@ -25,7 +29,9 @@ const cachorros = [
      cor: 'Branco', 
      img: '/assets/doguinho3.jpg', 
      comportamento: 'Calmo e sábio',
-     resumo: 'Thor é um cão idoso de porte grande, com um temperamento calmo e sábio, ideal para quem busca um companheiro sereno e experiente.' },
+     resumo: 'Thor é um cão idoso de porte grande, com um temperamento calmo e sábio, ideal para quem busca um companheiro sereno e experiente.',
+     valorApadrinhamento: 90
+  },
 
   { id: 4,
     nome: 'Luna', 
@@ -35,7 +41,9 @@ const cachorros = [
     cor: 'Preto', 
     img: '/assets/doguinho4.jpg', 
     comportamento: 'Adora crianças',
-    resumo: 'Luna é uma cadela adulta de porte pequeno, muito sociável e que adora a companhia de crianças, ótima para famílias.' },
+    resumo: 'Luna é uma cadela adulta de porte pequeno, muito sociável e que adora a companhia de crianças, ótima para famílias.',
+    valorApadrinhamento: 55
+  },
 
   { id: 5, 
     nome: 'Pipoca', 
@@ -45,7 +53,9 @@ const cachorros = [
     cor: 'Caramelo', 
     img: '/assets/doguinho5.jpg', 
     comportamento: 'Cheio de energia',
-    resumo: 'Pipoca é um filhote de porte médio, cheio de energia e sempre pronto para brincar, ideal para quem gosta de atividades ao ar livre.' },
+    resumo: 'Pipoca é um filhote de porte médio, cheio de energia e sempre pronto para brincar, ideal para quem gosta de atividades ao ar livre.',
+    valorApadrinhamento: 65
+  },
 
   { id: 6, 
     nome: 'Amora', 
@@ -55,7 +65,9 @@ const cachorros = [
     cor: 'Branco', 
     img: '/assets/doguinho6.jpg', 
     comportamento: 'Fiel e protetora',
-    resumo: 'Amora é uma cadela adulta de porte grande, muito fiel e protetora, excelente para quem busca segurança e companhia.' },
+    resumo: 'Amora é uma cadela adulta de porte grande, muito fiel e protetora, excelente para quem busca segurança e companhia.',
+    valorApadrinhamento: 85
+  },
 
   { id: 7, 
     nome: 'Fred', 
@@ -65,7 +77,9 @@ const cachorros = [
     cor: 'Preto', 
     img: '/assets/doguinho7.jpg', 
     comportamento: 'Muito inteligente',
-    resumo: 'Fred é um cão adulto de porte pequeno, muito inteligente e fácil de treinar, ótimo para quem quer um amigo esperto.' },
+    resumo: 'Fred é um cão adulto de porte pequeno, muito inteligente e fácil de treinar, ótimo para quem quer um amigo esperto.',
+    valorApadrinhamento: 50
+  },
 
   { id: 8, 
     nome: 'Bela', 
@@ -75,7 +89,9 @@ const cachorros = [
     cor: 'Marrom', 
     img: '/assets/doguinho8.jpg', 
     comportamento: 'Adora passear',
-    resumo: 'Bela é uma cadela idosa de porte médio, que adora passear e aproveitar momentos tranquilos ao ar livre.' },
+    resumo: 'Bela é uma cadela idosa de porte médio, que adora passear e aproveitar momentos tranquilos ao ar livre.',
+    valorApadrinhamento: 60
+  },
 
   { id: 9, 
     nome: 'Zeus', 
@@ -85,7 +101,9 @@ const cachorros = [
     cor: 'Caramelo', 
     img: '/assets/doguinho9.jpg', 
     comportamento: 'Futuro campeão de agility',
-    resumo: 'Zeus é um filhote de porte grande, muito ágil e cheio de potencial para esportes caninos como agility.' },
+    resumo: 'Zeus é um filhote de porte grande, muito ágil e cheio de potencial para esportes caninos como agility.',
+    valorApadrinhamento: 95
+  },
 
   { id: 10, nome: 'Luna', 
     sexo: 'Fêmea', 
@@ -94,7 +112,9 @@ const cachorros = [
     cor: 'Preto', 
     img: '/assets/doguinho10.jpg', 
     comportamento: 'Sociável com outros animais',
-    resumo: 'Luna é uma cadela adulta de porte pequeno, muito sociável e que se dá bem com outros animais.' },
+    resumo: 'Luna é uma cadela adulta de porte pequeno, muito sociável e que se dá bem com outros animais.',
+    valorApadrinhamento: 55
+  },
 
   { id: 11, 
     nome: 'Bob', 
@@ -104,7 +124,9 @@ const cachorros = [
     cor: 'Branco', 
     img: '/assets/doguinho11.jpg',
     comportamento: 'Gosta de dormir bastante',
-    resumo: 'Bob é um cão idoso de porte médio, tranquilo e que gosta de descansar bastante, ideal para ambientes calmos.' },
+    resumo: 'Bob é um cão idoso de porte médio, tranquilo e que gosta de descansar bastante, ideal para ambientes calmos.',
+    valorApadrinhamento: 60
+  },
 
   { id: 12, nome: 'Lola',
      sexo: 'Fêmea', 
@@ -113,7 +135,9 @@ const cachorros = [
      cor: 'Marrom', 
      img: '/assets/doguinho12.jpg', 
      comportamento: 'Muito curiosa e alegre',
-     resumo: 'Lola é uma filhote de porte grande, muito curiosa e alegre, perfeita para quem quer um companheiro animado.' },
+     resumo: 'Lola é uma filhote de porte grande, muito curiosa e alegre, perfeita para quem quer um companheiro animado.',
+     valorApadrinhamento: 80
+  },
 
   { id: 13,
      nome: 'Max', 
@@ -123,7 +147,9 @@ const cachorros = [
      cor: 'Caramelo', 
      img: '/assets/doguinho13.jpg', 
      comportamento: 'Adora brincar com bola',
-     resumo: 'Max é um cão adulto de porte pequeno, muito brincalhão e que adora jogos com bola.' },
+     resumo: 'Max é um cão adulto de porte pequeno, muito brincalhão e que adora jogos com bola.',
+     valorApadrinhamento: 50
+  },
 
   { id: 14, 
     nome: 'Maya', 
@@ -133,7 +159,9 @@ const cachorros = [
     cor: 'Preto', 
     img: '/assets/doguinho14.jpg', 
     comportamento: 'Carinhosa e obediente',
-    resumo: 'Maya é uma filhote de porte médio, carinhosa e obediente, ótima para famílias que buscam um cão companheiro.' },
+    resumo: 'Maya é uma filhote de porte médio, carinhosa e obediente, ótima para famílias que buscam um cão companheiro.',
+    valorApadrinhamento: 65
+  },
 
   { id: 15, 
     nome: 'Simba', 
@@ -143,7 +171,9 @@ const cachorros = [
     cor: 'Branco', 
     img: '/assets/doguinho15.jpg', 
     comportamento: 'Grande guardião',
-    resumo: 'Simba é um cão adulto de porte grande, com instinto protetor e excelente para quem busca segurança.' },
+    resumo: 'Simba é um cão adulto de porte grande, com instinto protetor e excelente para quem busca segurança.',
+    valorApadrinhamento: 90
+  },
 
   { id: 16, 
     nome: 'Simba', 
@@ -153,7 +183,9 @@ const cachorros = [
     cor: 'Branco', 
     img: '/assets/doguinho16.jpg', 
     comportamento: 'Grande guardião',
-    resumo: 'Simba é um cão adulto de porte grande, com instinto protetor e excelente para quem busca segurança.' },
+    resumo: 'Simba é um cão adulto de porte grande, com instinto protetor e excelente para quem busca segurança.',
+    valorApadrinhamento: 90
+  },
 ];
 
 export default cachorros;

@@ -17,7 +17,7 @@ const gerarChavePixFake = () => {
   );
 };
 
-const FormularioPagamento = ({ onContinuar, onFalha }) => {
+const FormularioPagamento = ({ valorApadrinhamento = 0, onContinuar, onFalha }) => {
   const [metodoSelecionado, setMetodoSelecionado] = useState("");
   const [qrCode, setQrCode] = useState("");
   const [chavePix, setChavePix] = useState("");
@@ -38,6 +38,18 @@ const FormularioPagamento = ({ onContinuar, onFalha }) => {
     { id: "debito", label: "Cartão de débito", icon: <BsCreditCard2FrontFill /> },
     { id: "credito", label: "Cartão de crédito", icon: <BsCreditCard2FrontFill /> },
   ];
+
+  // Função para formatar valor em moeda brasileira com segurança
+  const formatarValorEmReais = (valor) => {
+    const numero = Number(valor);
+    if (isNaN(numero) || numero <= 0) {
+      return "R$ 0,00";
+    }
+    return numero.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  };
 
   const gerarNovoQRCodeEChave = () => {
     setQrCode(gerarQRCodeFake());
@@ -123,20 +135,25 @@ const FormularioPagamento = ({ onContinuar, onFalha }) => {
     }
   };
 
+  useEffect(() => {
+    // Adicione este console.log para verificar o valor recebido
+    console.log("Valor recebido no FormularioPagamento:", valorApadrinhamento);
+  }, [valorApadrinhamento]);
+
   return (
     <div
       className="formulario-pagamento"
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center", // Centraliza horizontalmente
-        justifyContent: "center", // Centraliza verticalmente
-        width: "100%", // Garante que o formulário ocupe toda a largura disponível
-        maxWidth: "600px", // Define uma largura máxima para o formulário
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        maxWidth: "600px",
         padding: "2rem",
         backgroundColor: "#fff",
         borderRadius: "12px",
-        textAlign: "center", // Centraliza o texto dentro dos elementos
+        textAlign: "center",
       }}
     >
       <div className="opcoes-pagamento">
@@ -288,13 +305,14 @@ const FormularioPagamento = ({ onContinuar, onFalha }) => {
               <label htmlFor="salvarMetodo">Salvar método de pagamento</label>
             </div>
 
+            {/* Exibição do valor formatado */}
             <div className="resumo-doacao">
-              Doação: <span>R$ 5,00</span>
+              Doação: <span>{formatarValorEmReais(valorApadrinhamento)}</span>
             </div>
 
             <div className="total-pagamento">
               <span>Total a pagar:</span>
-              <strong>R$ 150,00</strong>
+              <strong>{formatarValorEmReais(valorApadrinhamento)}</strong>
             </div>
 
             <button type="submit" className="btn-finalizar">

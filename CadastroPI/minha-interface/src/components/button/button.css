@@ -1,5 +1,5 @@
 .custom-button {
-  background-color: #6a2c91; /* Roxo do layout */
+  background-color: #7C428F; /* Roxo do layout */
   color: white;
   padding: 8px 24px;
   border: none;
@@ -11,7 +11,7 @@
 }
 
 .custom-button:hover {
-  background-color: #571f7b;
+  background-color: #431546;
 }
 
 .custom-button:disabled {

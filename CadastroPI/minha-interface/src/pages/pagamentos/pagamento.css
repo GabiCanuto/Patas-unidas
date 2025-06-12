@@ -1,39 +1,8 @@
-.titulo-page{
-   font-size: 24px;
-   text-align: center;
-   margin-top: 60px;
-   font-size: 30px !important;
-}
-
-.paragrafo{
-    text-align: center;
-    margin-top: 10px;
-    font-size: 25px !important;
-}
-
-.container-cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding-bottom: 40px;
-}
-
-.titulo-page {
-    text-align: center;
-    font-size: 28px;
-    margin-top: 20px;
-}
-
-.paragrafo {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
 .pagamento-wrapper {
   position: relative;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -50,8 +19,36 @@
 .pagamento-conteudo {
   position: relative;
   z-index: 1;
+  flex: 1; /* Faz o conteúdo crescer para ocupar o espaço disponível */
+  display: flex;
+  flex-direction: column;
 }
 
 .conteudo-entre-header-footer {
-  margin-top: 100px; /* Ajuste esse valor para subir ou descer o conteúdo */
+  margin-top: 100px; /* Ajuste conforme necessário */
+  flex: 1; /* Faz o conteúdo principal crescer */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ajuste conforme necessidade */
+}
+
+.titulo-page {
+  font-size: 30px !important;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.paragrafo {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 25px !important;
+  margin-bottom: 30px;
+}
+
+.container-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
 }

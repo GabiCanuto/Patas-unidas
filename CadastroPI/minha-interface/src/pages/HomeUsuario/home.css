@@ -100,7 +100,7 @@ body, html {
 }
 
 .buttons button:hover {
-  background-color: #4a148c;
+  background-color: #431546;
 }
 
 /* IMAGEM LADO DIREITO */
@@ -332,7 +332,7 @@ body, html {
 .swiper-pagination-bullet {
   width: 12px !important;
   height: 12px !important;
-  background-color: #9c27b0 !important;
+  background-color: #431546 !important;
   border-radius: 50% !important;
   opacity: 0.6 !important;
   margin: 0 5px !important;

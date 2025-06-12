@@ -1,3 +1,22 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.HomeAdm {
+  flex: 1; /* Ocupa todo o espaço disponível */
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 100px;
+  box-sizing: border-box;
+}
+
 .footer {
   position: relative;
   width: 100vw;
@@ -5,8 +24,9 @@
   background-color: transparent;
   color: white;
   text-align: center;
-  padding-top: 200px;
-  padding-bottom: 40px;
+  padding: 12vmin 5vmin;
+  box-sizing: border-box;
+  margin-bottom: 0;
 }
 
 .footer-wave {
@@ -23,25 +43,75 @@
 .footer-content {
   position: relative;
   z-index: 1;
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .footer-title {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  margin-bottom: 3vmin;
   color: white;
   text-align: center;
 }
 
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 3vmin;
+  flex-wrap: wrap;
+  margin-top: 3vmin;
+}
+
 .footer-icons a {
   color: white; 
-  margin: 0 12px;
+  margin: 0;
   display: inline-block;
   transition: color 0.3s ease;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
 }
 
 .footer-icons a:hover {
   color: #7C428F;
+}
+
+/* Media Query para Tablets (até 768px) */
+@media (max-width: 768px) {
+  .footer {
+    padding: 16vmin 6vmin !important;
+  }
+
+  .footer-title {
+    font-size: clamp(1rem, 4vw, 1.6rem) !important;
+    margin-bottom: 4vmin !important;
+  }
+
+  .footer-icons {
+    gap: 6vmin !important;
+  }
+
+  .footer-icons a {
+    font-size: clamp(0.9rem, 4vw, 1.3rem) !important;
+  }
+}
+
+/* Media Query para Celulares (até 480px) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 20vmin 7vmin !important;
+  }
+
+  .footer-title {
+    font-size: clamp(1rem, 5vw, 1.4rem) !important;
+    margin-bottom: 5vmin !important;
+  }
+
+  .footer-icons {
+    gap: 7vmin !important;
+  }
+
+  .footer-icons a {
+    font-size: clamp(0.8rem, 5vw, 1.2rem) !important;
+  }
 }

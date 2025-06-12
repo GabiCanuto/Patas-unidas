@@ -18,6 +18,8 @@ export default function Doacao() {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [pagamentoSucesso, setPagamentoSucesso] = useState(null);
+  const [valorDoacao, setValorDoacao] = useState(""); // Estado para o valor da doação
+
   const steps = ["Doação", "Apadrinhamento", "Pagamento", "Confirmação"];
 
   const handleStepClick = (stepIndex) => {
@@ -31,6 +33,16 @@ export default function Doacao() {
 
   const handleVoltarConfirmacao = () => {
     setCurrentStep(2);
+  };
+
+  // Função para validar valor mínimo antes de avançar
+  const handleContinuar = () => {
+    const valor = parseFloat(valorDoacao);
+    if (isNaN(valor) || valor < 5) {
+      alert("Por favor, insira um valor mínimo de R$ 5,00");
+      return;
+    }
+    setCurrentStep(1);
   };
 
   return (
@@ -75,10 +87,12 @@ export default function Doacao() {
                   min="5.00"
                   step="0.01"
                   className="input-doacao"
+                  value={valorDoacao}
+                  onChange={(e) => setValorDoacao(e.target.value)}
                 />
                 <p className="valor-min">Valor mínimo: R$5,00</p>
                 <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "2rem" }}>
-                  <button className="btn-opcao btn-continuar" onClick={() => setCurrentStep(1)}>
+                  <button className="btn-opcao btn-continuar" onClick={handleContinuar}>
                     Continuar
                   </button>
                 </div>
@@ -111,11 +125,16 @@ export default function Doacao() {
             )}
 
             {currentStep === 2 && (
-              <FormularioPagamento
-                onVoltar={() => setCurrentStep(1)}
-                onContinuar={() => handlePagamentoResultado(true)}
-                onFalha={() => handlePagamentoResultado(false)}
-              />
+              <>
+                {/* Adicione este console.log para verificar o valor antes de passar */}
+                {console.log("Valor da doação sendo passado:", parseFloat(valorDoacao) || 0)}
+                <FormularioPagamento
+                  valorApadrinhamento={parseFloat(valorDoacao) || 0} // Passa o valor para o formulário
+                  onVoltar={() => setCurrentStep(1)}
+                  onContinuar={() => handlePagamentoResultado(true)}
+                  onFalha={() => handlePagamentoResultado(false)}
+                />
+              </>
             )}
 
             {currentStep === 3 && (

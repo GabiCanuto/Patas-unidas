@@ -28,7 +28,7 @@
 }
 
 .circle.active {
-  background-color: #6a2893;
+  background-color: #7C428F;
 }
 
 .line {
@@ -41,7 +41,7 @@
 }
 
 .line.active {
-  background-color: #6a2893;
+  background-color: #431546;
 }
 
 .circle {
@@ -60,9 +60,9 @@
 }
 
 .circle.active {
-  border-color: #6a2893;
+  border-color: #7C428F;
   background-color: #f5f0ff;
-  color: #6a2893;
+  color: #7C428F;
 }
 
 .checkmark {
