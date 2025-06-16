@@ -1,28 +1,37 @@
+/* Estilo das patinhas flutuantes */
 .pata {
-  position: fixed;
-  width: 80px;
+  position: fixed; /* fixa na tela para se mover sobre o conteúdo */
+  width: 80px; /* tamanho da patinha */
   height: 80px;
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 0;
-  animation: flutuar 8s infinite ease-in-out;
+  opacity: 0.5; /* transparência para não atrapalhar visualmente */
+  pointer-events: none; /* para não interferir em cliques */
+  z-index: 0; /* atrás dos elementos principais */
+  animation: flutuar 4s infinite ease-in-out; /* animação contínua e suave */
 }
 
+/* Animação que faz as patinhas flutuarem com movimento vertical, horizontal e rotação */
 @keyframes flutuar {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translate(0, 0) rotate(0deg); /* posição inicial e final */
+  }
+  25% {
+    transform: translate(10px, -20px) rotate(10deg); /* sobe e vai para direita com rotação */
   }
   50% {
-    transform: translateY(-15px);
+    transform: translate(0, -30px) rotate(-10deg); /* sobe mais e gira para o outro lado */
+  }
+  75% {
+    transform: translate(-10px, -20px) rotate(10deg); /* sobe e vai para esquerda com rotação */
   }
 }
 
+/* Container que posiciona as patinhas atrás do conteúdo e ocupa toda a tela */
 .patinhas-background {
   position: absolute;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 0; /* atrás */
+  z-index: 0; /* atrás dos elementos principais */
   pointer-events: none; /* para não atrapalhar cliques */
 }

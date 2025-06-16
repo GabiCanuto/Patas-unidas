@@ -26,12 +26,26 @@ import PatasAleatorias from '../../components/patinhas/patasAleatorias';
 export default function HomeUsuario() {
   const navigate = useNavigate();
 
+  // Função para navegar para a página de cadastro/register
   const irParaCadastro = () => {
-    navigate('/cadastro');
+    navigate('/register');
+  };
+
+  // Função para navegar para outras páginas (se necessário)
+  const irParaVitrine = () => {
+    navigate('/vitrine');
+  };
+
+  const irParaDoacoes = () => {
+    navigate('/doacoes');
+  };
+
+  const irParaSobreNos = () => {
+    navigate('/sobre-nos');
   };
 
   return (
-    // Adicionamos estilo inline para garantir posição relativa e altura mínima
+    // Container principal com posição relativa e altura mínima
     <div className="home-container" style={{ position: 'relative', minHeight: '100vh' }}>
       {/* Patinhas animadas em background */}
       <PatasAleatorias quantidade={15} />
@@ -42,25 +56,27 @@ export default function HomeUsuario() {
         ))}
       </div>
 
+      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
           <img src={logo} alt="Logo Patas Unidas" />
         </div>
         <div className="nav-links">
           <a href="/home">Home</a>
-          <a href="/Register">Vitrine</a>
-          <a href="/Register">Doações</a>
-          <a href="/Register" onClick={irParaCadastro}>Cadastro</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); irParaVitrine(); }}>Vitrine</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); irParaDoacoes(); }}>Doações</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); irParaCadastro(); }}>Cadastro</a>
         </div>
       </nav>
 
+      {/* Seção principal */}
       <section className="main-section">
         <div className="text-section">
           <h1>Transforme amor em ação:</h1>
           <p>adote, doe, salve uma vida.</p>
           <div className="buttons">
             <button onClick={irParaCadastro}>Cadastrar</button>
-            <button>Sobre nós</button>
+            <button onClick={irParaSobreNos}>Sobre nós</button>
           </div>
         </div>
         <div className="image-section">
@@ -68,6 +84,7 @@ export default function HomeUsuario() {
         </div>
       </section>
 
+      {/* Seção de cards */}
       <section className="cards-section">
         <div className="card">
           <img src={apadrinheIcon} alt="Apadrinhe um animal" />
@@ -86,6 +103,7 @@ export default function HomeUsuario() {
         </div>
       </section>
 
+      {/* Seção Quem Somos */}
       <section className="quem-somos-section">
         <div className="quem-somos-content">
           <div className="quem-somos-img">
@@ -103,6 +121,7 @@ export default function HomeUsuario() {
         </div>
       </section>
 
+      {/* Seção do carrossel */}
       <section className="carrossel-cards-section">
         <h2 className="titulo-carrossel">Nossos Filhotes</h2>
 
@@ -113,6 +132,21 @@ export default function HomeUsuario() {
             loop={true}
             pagination={{ clickable: true }}
             modules={[Pagination]}
+            breakpoints={{
+              // Responsividade do Swiper
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
           >
             {[card1, card2, card3, card4, card5, card6].map((img, index) => (
               <SwiperSlide key={index}>
@@ -133,6 +167,7 @@ export default function HomeUsuario() {
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="footer">
         <img src={footerImg} alt="Footer waves" className="footer-wave" />
         <div className="footer-content">
@@ -153,7 +188,6 @@ export default function HomeUsuario() {
           </div>
         </div>
       </footer>
-
     </div>
   );
 }

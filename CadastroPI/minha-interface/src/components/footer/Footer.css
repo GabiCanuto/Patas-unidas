@@ -7,26 +7,29 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* garante que o body ocupe toda a altura da viewport */
 }
 
 .HomeAdm {
-  flex: 1; /* Ocupa todo o espaço disponível */
+  flex: 1; /* ocupa o espaço disponível empurrando o footer para baixo */
   position: relative;
   overflow-x: hidden;
   padding-top: 100px;
   box-sizing: border-box;
 }
 
+/* Footer fixo no fluxo normal, sem position absolute/fixed */
 .footer {
-  position: relative;
-  width: 100vw;
-  overflow: visible;
+  width: 100%;
   background-color: transparent;
   color: white;
   text-align: center;
   padding: 12vmin 5vmin;
   box-sizing: border-box;
-  margin-bottom: 0;
+  margin: 0; /* remove margin-bottom para evitar espaços extras */
+  flex-shrink: 0; /* evita que o footer encolha */
+  position: relative;
+  z-index: 10;
 }
 
 .footer-wave {
@@ -79,39 +82,39 @@ body {
 /* Media Query para Tablets (até 768px) */
 @media (max-width: 768px) {
   .footer {
-    padding: 16vmin 6vmin !important;
+    padding: 16vmin 6vmin;
   }
 
   .footer-title {
-    font-size: clamp(1rem, 4vw, 1.6rem) !important;
-    margin-bottom: 4vmin !important;
+    font-size: clamp(1rem, 4vw, 1.6rem);
+    margin-bottom: 4vmin;
   }
 
   .footer-icons {
-    gap: 6vmin !important;
+    gap: 6vmin;
   }
 
   .footer-icons a {
-    font-size: clamp(0.9rem, 4vw, 1.3rem) !important;
+    font-size: clamp(0.9rem, 4vw, 1.3rem);
   }
 }
 
 /* Media Query para Celulares (até 480px) */
 @media (max-width: 480px) {
   .footer {
-    padding: 20vmin 7vmin !important;
+    padding: 20vmin 7vmin;
   }
 
   .footer-title {
-    font-size: clamp(1rem, 5vw, 1.4rem) !important;
-    margin-bottom: 5vmin !important;
+    font-size: clamp(1rem, 5vw, 1.4rem);
+    margin-bottom: 5vmin;
   }
 
   .footer-icons {
-    gap: 7vmin !important;
+    gap: 7vmin;
   }
 
   .footer-icons a {
-    font-size: clamp(0.8rem, 5vw, 1.2rem) !important;
+    font-size: clamp(0.8rem, 5vw, 1.2rem);
   }
 }

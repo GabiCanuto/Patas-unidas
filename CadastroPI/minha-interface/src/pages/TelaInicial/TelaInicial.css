@@ -301,6 +301,7 @@ body, html {
 .feedbacks-section .swiper-slide {
   display: flex !important;
   justify-content: center;
+ 
 }
 
 .feedbacks-section .feedback-item {
@@ -311,7 +312,7 @@ body, html {
   opacity: 0.85;           /* Levemente mais claro */
   text-align: left;        /* Alinha o texto reto à esquerda */
   color: #3c3c3c; 
-  margin-left: 120px !important;         /* Tom escuro suave */
+  margin-left: 155px !important;         /* Tom escuro suave */
 }
 
 /* FOOTER */
