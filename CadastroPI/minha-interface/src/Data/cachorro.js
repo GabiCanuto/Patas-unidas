@@ -18,7 +18,7 @@ const cachorros = [
     cor: 'Marrom', 
     img: '/assets/doguinho2.jpg', 
     comportamento: 'Muito dócil e carinhosa',
-    resumo: 'Mel é uma cadela adulta de porte médio, muito dócil e carinhosa, perfeita para quem quer um amigo tranquilo e afetuoso.',
+    resumo: 'Mel é uma cadela adulta de porte médio, muito dócil e carinhosa, perfeita para quem quer um amigo tranquilo e afetuoso. ',
     valorApadrinhamento: 70
   },
 
@@ -65,7 +65,7 @@ const cachorros = [
     cor: 'Branco', 
     img: '/assets/doguinho6.jpg', 
     comportamento: 'Fiel e protetora',
-    resumo: 'Amora é uma cadela adulta de porte grande, muito fiel e protetora, excelente para quem busca segurança e companhia.',
+    resumo: 'Amora é uma cadela adulta de porte grande, muito fiel e protetora, ideal para quem busca segurança e companhia. Carinhosa com conhecidos, impõe limites quando preciso. Inteligente e leal, adora caminhadas e momentos em família.',
     valorApadrinhamento: 85
   },
 
@@ -175,17 +175,7 @@ const cachorros = [
     valorApadrinhamento: 90
   },
 
-  { id: 16, 
-    nome: 'Simba', 
-    sexo: 'Macho', 
-    porte: 'Grande', 
-    idade: 'Adulto', 
-    cor: 'Branco', 
-    img: '/assets/doguinho16.jpg', 
-    comportamento: 'Grande guardião',
-    resumo: 'Simba é um cão adulto de porte grande, com instinto protetor e excelente para quem busca segurança.',
-    valorApadrinhamento: 90
-  },
+  
 ];
 
 export default cachorros;

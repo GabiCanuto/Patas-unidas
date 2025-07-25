@@ -2,33 +2,34 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Register from '../pages/Register/Register';
 import Login from '../pages/Login';
 import Profile from "../pages/Profile";
-import HomeUsuario from '../pages/homeUsuario/home';
+import HomeUsuario from '../pages/HomeUsuario/home';
 import TelaInicial from '../pages/TelaInicial/TelaInicial';
-import HomeAdm from '../pages/HomeAdm/HomeAdm';
 import PrivateRoute from './PrivateRoute';
 import Pagamento from '../pages/pagamentos/pagamentos';
 import Vitrine from '../pages/Vitrine/Vitrine';
-import Doacao from '../pages/doação/doacao'; // Corrigido: sem acento
+import Doacao from '../pages/doação/doacao';
 import Apadrinhamento from '../pages/Apadrinhamento/Apadrinhamento';
+import CadastroCachorro from '../pages/CadastroCachorro/CadastroCachorro';
+import VisualizaApadrinhamento from '../pages/visualizaApadrinhamento/visualizaApadrinhamento'; // Importa o componente
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Página inicial padrão */}
         <Route path="/" element={<TelaInicial />} />
-
         <Route path="/home" element={<HomeUsuario />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/Register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/tela-inicial" element={<TelaInicial />} />
-        <Route path="/home-adm" element={<HomeAdm />} />
         <Route path="/vitrine" element={<Vitrine />} />
         <Route path="/pagamento" element={<Pagamento />} />
         <Route path="/doacao" element={<Doacao />} />
         <Route path="/apadrinhamento" element={<Apadrinhamento />} />
+        <Route path="/cadastro-cachorro" element={<CadastroCachorro />} />
 
-        {/* Rota protegida */}
+        {/* Nova rota para visualizar apadrinhamento */}
+        <Route path="/visualiza-apadrinhamento" element={<VisualizaApadrinhamento />} />
+
         <Route
           path="/profile"
           element={
@@ -38,7 +39,6 @@ export default function AppRoutes() {
           }
         />
 
-        {/* Rota coringa (404) redireciona para Login */}
         <Route path="*" element={<Login />} />
       </Routes>
     </BrowserRouter>

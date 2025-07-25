@@ -6,7 +6,7 @@
 }
 
 .vitrine-card {
-  position: relative;
+  position: relative; /* necessário para posicionar a patinha */
   width: 270px;
   height: 380px;
   background-color: #fff;
@@ -67,9 +67,33 @@
   text-align: left;
   line-height: 1.6;  /* espaçamento entre linhas */
   transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10; /* para ficar acima da patinha */
 }
 
 .vitrine-card:hover .vitrine-card-info {
   transform: translate(-50%, -50%);
   opacity: 1;
+}
+
+/* Patinha no canto direito inferior */
+.patinha-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 80px; /* ajuste o tamanho conforme desejar */
+  height: 80px;
+  opacity: 0.7; /* opcional: deixa a patinha um pouco transparente */
+  pointer-events: none; /* para não interferir em cliques */
+  z-index: 5; /* abaixo do texto do hover */
+}
+
+.vitrine-card-info p {
+  margin-bottom: 6px; /* diminui o espaçamento entre linhas */
+}
+
+.info-label {
+  font-weight: bold;
+  margin-right: 4px; /* diminui o espaço entre título e valor */
+  display: inline-block;
+  min-width: 50px; /* reduz a largura mínima para aproximar os textos */
 }

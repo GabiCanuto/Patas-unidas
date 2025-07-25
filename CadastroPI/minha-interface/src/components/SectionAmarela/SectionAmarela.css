@@ -1,0 +1,187 @@
+/* Reset básico para evitar espaços padrão do navegador */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Container principal da seção */
+.welcome-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4vw 2vw 3vw; /* Padding lateral reduzido */
+  max-width: 1100px;    /* Largura máxima menor */
+  margin: 0 auto;
+  flex-wrap: wrap;      /* Permite quebra em telas menores */
+  gap: 2vw;             /* Espaço entre texto e imagem */
+  position: relative;   /* Para posicionamento relativo */
+  margin-top: 60px;     /* Espaço para o header fixo (ajuste conforme altura do header) */
+  padding-top: 0;       /* Remove padding-top extra */
+}
+
+/* Texto da seção */
+.welcome-text {
+  max-width: 480px;     /* Valor fixo para desktop */
+  z-index: 3;
+  padding-bottom: 1rem;
+  margin-top: 0;
+  position: relative;   /* Para posicionar elementos internos */
+}
+
+.welcome-text h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #131313;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+}
+
+.welcome-text h1 + h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Imagem da seção */
+.welcome-image {
+  position: relative;
+  width: 340px;
+  max-width: 45vw;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  margin-top: -90px; /* Ajustado para reduzir espaço acima */
+}
+
+.welcome-image img {
+  width: 600px;
+  height: 600px;
+  border-radius: 15%;
+  transform: rotate(1deg);
+  margin-left: -40px;
+  margin-top: -174px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Bola amarela atrás da imagem */
+.welcome-image::before {
+  content: '';
+  position: absolute;
+  width: 950px;
+  height: 850px;
+  background-color: #fecb2f;
+  border-radius: 50%;
+  top: -50%;
+  left: 53%;
+  transform: translate(-50%, -30%);
+  z-index: 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Media Queries para responsividade */
+
+@media (max-width: 1024px) {
+  .welcome-section {
+    padding: 2vw 2vw 3vw;
+    max-width: 95vw;
+    margin-top: 60px; /* mantém espaço para header fixo */
+  }
+
+  .welcome-text {
+    max-width: 95vw;
+    padding: 30px;
+    margin-top: 0;
+  }
+
+  .welcome-image {
+    width: 300px;
+    max-width: 90vw;
+  }
+
+  .welcome-image img {
+    margin-left: 20px;
+    margin-top: -120px;
+    width: 260px;
+  }
+
+  .welcome-image::before {
+    width: 300px;
+    height: 300px;
+    top: -80%;
+    left: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 5vw 2vw 4vw;
+    max-width: 100vw;
+    margin-top: 60px; /* mantém espaço para header fixo */
+  }
+
+  .welcome-text {
+    max-width: 100vw;
+    padding: 0 0 8vw 0;
+    text-align: center;
+  }
+
+  .welcome-image {
+    width: 90vw;
+    max-width: 350px;
+    margin-top: -40px;
+  }
+
+  .welcome-image img {
+    margin-left: 0;
+    margin-top: -60px;
+    width: 100%;
+  }
+
+  .welcome-image::before {
+    width: 200px;
+    height: 200px;
+    top: -40%;
+    left: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-section {
+    flex-direction: column;
+    padding: 2vw 2vw 4vw;
+    max-width: 100vw;
+    margin-top: 60px; /* mantém espaço para header fixo */
+  }
+
+  .welcome-text {
+    max-width: 100%;
+    padding: 0 0 1.5rem 0;
+    text-align: center;
+  }
+
+  .welcome-image {
+    width: 90vw;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .welcome-image img {
+    margin-left: 0;
+    margin-top: -25px;
+    width: 100%;
+  }
+
+  .welcome-image::before {
+    width: 120px;
+    height: 120px;
+    top: -20%;
+    left: 50%;
+  }
+}

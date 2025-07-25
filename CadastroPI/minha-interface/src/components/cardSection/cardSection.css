@@ -1,0 +1,183 @@
+.cardsHome {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  margin-top: 60px;
+  z-index: 2;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.cardHome {
+  position: relative;
+  width: 400px;
+  height: 450px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinha o conteúdo ao fundo */
+  align-items: center;
+  text-align: center;
+  padding: 3px;
+  margin-top: -200px !important;
+}
+
+.cardHome-img-container {
+  width: 100%;
+  height: 500px !important; /* altura fixa para alinhar a base */
+  display: flex;
+  align-items: flex-end; /* imagem vai para o fundo do container */
+  justify-content: center;
+}
+
+.cardHome img {
+  width: 250px !important;
+  max-height: 250px !important;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-top: -30px !important; /* margem negativa para subir a imagem */
+  position: relative;
+  top: -80px; /* ajuste fino para subir mais */
+  transition: opacity 0.5s ease;
+}
+
+.cardHome:hover img {
+  opacity: 0.2; /* imagem esmaecida no hover */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 500px !important;
+  color: #000;
+  margin: 16px 0 0 0; /* mantém margem para não alterar fluxo */
+  position: relative;
+  top: -60px; /* sobe o título 12px */
+  letter-spacing: normal;
+  text-shadow: none;
+  margin-left: 15px !important;
+}
+
+.card-desc {
+  font-size: 0.9rem;     /* menor tamanho */
+  font-weight: normal;   /* sem negrito */
+  color: #000;           /* preto */
+  margin: 10px 0 0 0;
+  line-height: 1.4;
+  text-shadow: none;
+
+}
+
+.textoCardHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;           /* fundo ocupa o card inteiro */
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #7C428F11;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px;
+  box-sizing: border-box;
+  color: #431546;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+  margin-left: 0 !important;
+  overflow: hidden;
+}
+
+/* Container interno para o texto */
+.textoCardHover-content {
+  max-width: 80%;       /* limita a largura do texto */
+  overflow-y: auto;     /* scroll se o texto for muito grande */
+}
+.ajustar-img-terceira {
+  margin-top: 32px !important;
+}
+
+.cardHome:hover .textoCardHover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .cardsHome {
+    gap: 300px !important;
+    margin-top: -60px !important;
+  }
+  .cardHome {
+    width: 320px;
+    height: 370px;
+  }
+  .cardHome-img-container {
+    height: 400px !important;
+    margin-top: -30px !important;
+  }
+  .cardHome img {
+    width: 140px;
+    max-height: 140px;
+    margin-top: -20px !important;
+    top: -60px !important;
+    
+  }
+}
+
+@media (max-width: 900px) {
+   .cardsHome {
+    gap: 300px !important;
+    margin-top: -60px !important;
+  }
+  .cardHome {
+    width: 320px;
+    height: 370px;
+  }
+  .cardHome-img-container {
+    height: 400px !important;
+    margin-top: -30px !important;
+  }
+  .cardHome img {
+    width: 140px;
+    max-height: 140px;
+    margin-top: -20px !important;
+    top: -60px !important;
+    
+  }
+
+}
+
+@media (max-width: 500px) {
+  .cardHome {
+    width: 98vw;
+    min-width: 0;
+    max-width: 100vw;
+    height: auto;
+  }
+  .cardHome-img-container {
+    height: 120px;
+  }
+  .cardHome img {
+    width: 90px;
+    max-height: 90px;
+    margin-top: -10px !important;
+    top: -5px;
+  }
+  .card-title {
+    font-size: 0.9rem;
+  }
+  .card-desc {
+    font-size: 0.8rem;
+  }
+}

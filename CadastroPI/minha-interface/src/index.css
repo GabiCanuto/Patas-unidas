@@ -3,4 +3,26 @@
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #fdf6e4;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.HomeAdm, /* ou .apadrinhamento-wrapper se for o container principal */
+.apadrinhamento-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.apadrinhamento-conteudo {
+  flex: 1;
+  /* outras regras que já tem */
 }

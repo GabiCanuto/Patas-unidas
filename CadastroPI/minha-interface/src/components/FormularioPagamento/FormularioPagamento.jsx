@@ -17,7 +17,12 @@ const gerarChavePixFake = () => {
   );
 };
 
-const FormularioPagamento = ({ valorApadrinhamento = 0, onContinuar, onFalha }) => {
+const FormularioPagamento = ({
+  valorApadrinhamento = 0,
+  onContinuar,
+  onFalha,
+  tipo = "doacao", // Valor padrão é "doacao"
+}) => {
   const [metodoSelecionado, setMetodoSelecionado] = useState("");
   const [qrCode, setQrCode] = useState("");
   const [chavePix, setChavePix] = useState("");
@@ -307,7 +312,12 @@ const FormularioPagamento = ({ valorApadrinhamento = 0, onContinuar, onFalha }) 
 
             {/* Exibição do valor formatado */}
             <div className="resumo-doacao">
-              Doação: <span>{formatarValorEmReais(valorApadrinhamento)}</span>
+              {tipo === "apadrinhamento" ? (
+                "Valor de Apadrinhamento:"
+              ) : (
+                "Doação:"
+              )}{" "}
+              <span>{formatarValorEmReais(valorApadrinhamento)}</span>
             </div>
 
             <div className="total-pagamento">

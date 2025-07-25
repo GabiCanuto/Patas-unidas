@@ -7,11 +7,11 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* garante que o body ocupe toda a altura da viewport */
+  min-height: 100vh;
 }
 
 .HomeAdm {
-  flex: 1; /* ocupa o espaço disponível empurrando o footer para baixo */
+  flex: 1;
   position: relative;
   overflow-x: hidden;
   padding-top: 100px;
@@ -20,27 +20,35 @@ body {
 
 /* Footer fixo no fluxo normal, sem position absolute/fixed */
 .footer {
-  width: 100%;
+  position: relative;
+  align-self: stretch !important;
+  top: 50px !important;
+  left: -30px !important;
+  width: 1600px;
+  left:40;
+  right: 0;
   background-color: transparent;
   color: white;
   text-align: center;
-  padding: 12vmin 5vmin;
+  padding: 0 3vmin 4vmin 3vmin; /* padding-top removido daqui */
   box-sizing: border-box;
-  margin: 0; /* remove margin-bottom para evitar espaços extras */
-  flex-shrink: 0; /* evita que o footer encolha */
-  position: relative;
+  margin: 0;
+  flex-shrink: 0;
   z-index: 10;
+  overflow: hidden;
 }
 
 .footer-wave {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
+  min-width: 320px;
   height: auto;
   z-index: 0;
   pointer-events: none;
   user-select: none;
+  padding-top: -30px !important;
 }
 
 .footer-content {
@@ -48,73 +56,90 @@ body {
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 80px 0 0 0; /* AQUI: aumenta o padding-top para afastar do topo/onda */
   box-sizing: border-box;
 }
 
 .footer-title {
-  font-size: clamp(1.2rem, 2vw, 2rem);
-  margin-bottom: 3vmin;
+  font-size: clamp(1.1rem, 2.5vw, 2rem);
+  margin-bottom: 4vmin;
   color: white;
   text-align: center;
+  word-break: break-word;
+  margin-top: 90px !important;
 }
 
 .footer-icons {
   display: flex;
   justify-content: center;
-  gap: 3vmin;
+  gap: 4vmin;
   flex-wrap: wrap;
-  margin-top: 3vmin;
+  margin-top: 6vmin;
 }
 
 .footer-icons a {
-  color: white; 
+  color: white;
   margin: 0;
   display: inline-block;
-  transition: color 0.3s ease;
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  transition: color 0.3s ease, transform 0.2s;
+  font-size: clamp(1.1rem, 3vw, 2rem);
 }
 
 .footer-icons a:hover {
   color: #7C428F;
+  transform: scale(1.15);
 }
 
-/* Media Query para Tablets (até 768px) */
-@media (max-width: 768px) {
-  .footer {
-    padding: 16vmin 6vmin;
+/* Tablets */
+@media (max-width: 900px) {
+  .footer-content {
+    padding: 60px 0 0 0; /* padding-top menor em tablets */
   }
-
   .footer-title {
-    font-size: clamp(1rem, 4vw, 1.6rem);
-    margin-bottom: 4vmin;
-  }
-
-  .footer-icons {
-    gap: 6vmin;
-  }
-
-  .footer-icons a {
-    font-size: clamp(0.9rem, 4vw, 1.3rem);
-  }
-}
-
-/* Media Query para Celulares (até 480px) */
-@media (max-width: 480px) {
-  .footer {
-    padding: 20vmin 7vmin;
-  }
-
-  .footer-title {
-    font-size: clamp(1rem, 5vw, 1.4rem);
+    font-size: clamp(1rem, 4vw, 1.5rem);
     margin-bottom: 5vmin;
   }
-
   .footer-icons {
-    gap: 7vmin;
+    gap: 6vmin;
+    margin-top: 8vmin;
   }
-
   .footer-icons a {
-    font-size: clamp(0.8rem, 5vw, 1.2rem);
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .footer-content {
+    padding: 40px 0 0 0; /* padding-top menor em celulares */
+  }
+  .footer-title {
+    font-size: clamp(0.95rem, 5vw, 1.2rem);
+    margin-bottom: 7vmin;
+  }
+  .footer-icons {
+    gap: 8vmin;
+    margin-top: 10vmin;
+  }
+  .footer-icons a {
+    font-size: clamp(0.9rem, 6vw, 1.2rem);
+  }
+}
+
+/* Pequenos celulares */
+@media (max-width: 400px) {
+  .footer-content {
+    padding: 28px 0 0 0; /* padding-top menor em celulares pequenos */
+  }
+  .footer-title {
+    font-size: 1rem;
+    margin-bottom: 8vmin;
+  }
+  .footer-icons {
+    gap: 10vmin;
+    margin-top: 12vmin;
+  }
+  .footer-icons a {
+    font-size: 1rem;
   }
 }

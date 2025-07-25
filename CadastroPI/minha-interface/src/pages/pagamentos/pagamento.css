@@ -6,7 +6,7 @@
   overflow: hidden;
 }
 
-.patinhas-background {
+.pagamento-patinhas-background {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -24,7 +24,7 @@
   flex-direction: column;
 }
 
-.conteudo-entre-header-footer {
+.pagamento-conteudo-entre-header-footer {
   margin-top: 100px; /* Ajuste conforme necessário */
   flex: 1; /* Faz o conteúdo principal crescer */
   display: flex;
@@ -32,23 +32,73 @@
   justify-content: flex-start; /* Ajuste conforme necessidade */
 }
 
-.titulo-page {
+.pagamento-titulo-page {
   font-size: 30px !important;
-  text-align: center;
+  text-align: center !important;
   margin-top: 60px;
 }
 
-.paragrafo {
+.pagamento-paragrafo {
   text-align: center;
   margin-top: 10px;
   font-size: 25px !important;
   margin-bottom: 30px;
 }
 
-.container-cards {
+.pagamento-container-cards {
   display: flex;
   justify-content: center;
   gap: 30px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding-bottom: 40px;
+}
+
+.pagamento-container-cards > * {
+  flex: 0 0 400px; /* Aumenta a largura fixa para 400px */
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Estilo para o botão dentro do card */
+.pagamento-container-cards button {
+  background-color: #6D3A7E !important;
+  color: white !important;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 36px;
+
+  /* Novos ajustes para remover linha branca */
+  line-height: 1;          /* Ajusta a altura da linha para evitar espaçamento extra */
+  text-decoration: none !important;   /* Remove sublinhado, se houver */
+  box-shadow: none;        /* Remove sombra que pode parecer linha */
+  outline: none;           /* Remove contorno que pode aparecer */
+}
+.pagamento-container-cards button:hover {
+  background-color: #431546 !important;
+  box-shadow: 0 4px 12px rgba(74, 0, 114, 0.6);
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+  .pagamento-container-cards {
+    flex-wrap: wrap;
+  }
+
+  .pagamento-container-cards > * {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }

@@ -47,13 +47,13 @@ export default function Doacao() {
 
   return (
     <div className="pagamento-wrapper">
+      <Header /> {/* Header fora do conteúdo principal */}
+
       <div className="patinhas-background">
         <PatasAleatorias quantidade={20} />
       </div>
 
       <div className="pagamento-conteudo">
-        <Header />
-
         <div className={`conteudo-entre-header-footer doacao-section step-${currentStep}`}>
           <div className="form-doacao-container">
             <Stepper
@@ -126,10 +126,8 @@ export default function Doacao() {
 
             {currentStep === 2 && (
               <>
-                {/* Adicione este console.log para verificar o valor antes de passar */}
-                {console.log("Valor da doação sendo passado:", parseFloat(valorDoacao) || 0)}
                 <FormularioPagamento
-                  valorApadrinhamento={parseFloat(valorDoacao) || 0} // Passa o valor para o formulário
+                  valorApadrinhamento={parseFloat(valorDoacao) || 0}
                   onVoltar={() => setCurrentStep(1)}
                   onContinuar={() => handlePagamentoResultado(true)}
                   onFalha={() => handlePagamentoResultado(false)}

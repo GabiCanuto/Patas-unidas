@@ -1,0 +1,201 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id_usuario     Int              @id @default(autoincrement())
+  id_endereco    Int?
+  id_permissoes  Int              @default(3)
+  nome           String           @db.VarChar(45)
+  sobrenome      String           @db.VarChar(45)
+  nome_social    String?          @db.VarChar(45)
+  data_nasc      DateTime         @db.Date
+  cpf            String           @db.VarChar(14)
+  telefone       String           @db.VarChar(45)
+  createdAt      DateTime         @db.DateTime(0)
+  updateAt       DateTime         @db.DateTime(0)
+  deleteAt       DateTime?        @db.DateTime(0)
+  adotar         adotar[]
+  apadrinhar     apadrinhar[]
+  cao            cao[]
+  cartao_usuario cartao_usuario[]
+  login          login[]
+  endereco       endereco?        @relation(fields: [id_endereco], references: [id_endereco], onDelete: NoAction, onUpdate: NoAction, map: "fk_usuario_endereco1")
+  permissoes     permissoes       @relation(fields: [id_permissoes], references: [id_permissoes], onDelete: NoAction, onUpdate: NoAction, map: "fk_usuario_permissoes1")
+
+  @@index([id_endereco], map: "fk_usuario_endereco1_idx")
+  @@index([id_permissoes], map: "fk_usuario_permissoes1_idx")
+  @@map("usuario")
+}
+
+// Modelo cao ajustado para incluir os campos necessários
+model cao {
+  id_cao               Int           @id @default(autoincrement())
+  id_usuario           Int
+  id_raca              Int
+  nome                 String        @db.VarChar(45)
+  sexo                 String        @db.VarChar(10)  // 'Macho' ou 'Fêmea'
+  porte                String        @db.VarChar(20)  // 'Pequeno', 'Médio', 'Grande'
+  idade                String        @db.VarChar(30)  // Ex: 'Filhote', 'Adulto', '2 anos'
+  cor                  String        @db.VarChar(30)
+  img                  String?       @db.Text         // URL ou base64 da imagem
+  comportamento        String        @db.Text
+  resumo               String        @db.Text
+  valorApadrinhamento  Decimal       @default(50.0) @db.Decimal(10,2)
+  castrado             String?       @db.VarChar(10)  // 'Sim' ou 'Não'
+  disponivel           Boolean       @default(true)   // Se está disponível para adoção
+  createdAt            DateTime      @default(now()) @db.DateTime(0)
+  updatedAt            DateTime      @updatedAt @db.DateTime(0)
+  
+  // Relacionamentos existentes
+  adota_cao            adota_cao[]
+  apadrinha_cao        apadrinha_cao[] @ignore
+  cao_vacina           cao_vacina[]
+  usuario              User          @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_cao_usuario1")
+  raca                 raca          @relation(fields: [id_raca], references: [idraca], onDelete: NoAction, onUpdate: NoAction, map: "fk_cao_raca1")
+
+  @@index([id_usuario], map: "fk_cao_usuario1_idx")
+  @@index([id_raca], map: "fk_cao_raca1_idx")
+}
+
+// Resto dos seus modelos permanecem iguais...
+model adota_cao {
+  id_adotar     Int
+  cao_id_cao    Int
+  status_adocao Int    @db.TinyInt
+  adotar        adotar @relation(fields: [id_adotar], references: [id_adotar], onDelete: NoAction, onUpdate: NoAction, map: "fk_adota_cao_adotar1")
+  cao           cao    @relation(fields: [cao_id_cao], references: [id_cao], onDelete: NoAction, onUpdate: NoAction, map: "fk_adota_cao_cao1")
+
+  @@id([id_adotar, cao_id_cao])
+  @@index([id_adotar], map: "fk_adota_cao_adotar1_idx")
+  @@index([cao_id_cao], map: "fk_adota_cao_cao1_idx")
+}
+
+model adotar {
+  id_adotar            Int         @id @default(autoincrement())
+  id_usuario           Int
+  data_adocao          DateTime    @db.Date
+  resultado_formulario String      @db.LongText
+  adota_cao            adota_cao[]
+  usuario              User        @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_adotar_usuario1")
+
+  @@index([id_usuario], map: "fk_adotar_usuario1_idx")
+}
+
+model apadrinha_cao {
+  id_apadrinhar Int
+  id_cao        Int
+  apadrinhar    apadrinhar @relation(fields: [id_apadrinhar], references: [id_apadrinhar], onDelete: NoAction, onUpdate: NoAction, map: "fk_apadrinha_cao_apadrinhar1")
+  cao           cao        @relation(fields: [id_cao], references: [id_cao], onDelete: NoAction, onUpdate: NoAction, map: "fk_apadrinha_cao_cao1")
+
+  @@index([id_apadrinhar], map: "fk_apadrinha_cao_apadrinhar1_idx")
+  @@index([id_cao], map: "fk_apadrinha_cao_cao1_idx")
+  @@ignore
+}
+
+model apadrinhar {
+  id_apadrinhar    Int                @id @default(autoincrement())
+  id_usuario       Int
+  data             DateTime           @db.Date
+  dia_pagamento    DateTime           @db.Date
+  status           Int                @db.TinyInt
+  valor_total      Decimal            @db.Decimal(10, 0)
+  forma_pagamento  String             @db.VarChar(45)
+  apadrinha_cao    apadrinha_cao[]    @ignore
+  usuario          User               @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_apadrinhar_usuario1")
+  cartao_apadrinha cartao_apadrinha[] @ignore
+
+  @@index([id_usuario], map: "fk_apadrinhar_usuario1_idx")
+}
+
+model cao_vacina {
+  id           Int       @id
+  id_vacina    Int
+  id_cao       Int
+  data         DateTime  @db.Date
+  proxima_dose DateTime? @db.Date
+  observacao   String?   @db.LongText
+  cao          cao       @relation(fields: [id_cao], references: [id_cao], onDelete: NoAction, onUpdate: NoAction, map: "fk_cao_vacina_cao1")
+  vacina       vacina    @relation(fields: [id_vacina], references: [id_vacina], onDelete: NoAction, onUpdate: NoAction, map: "fk_cao_vacina_vacina1")
+
+  @@index([id_cao], map: "fk_cao_vacina_cao1_idx")
+  @@index([id_vacina], map: "fk_cao_vacina_vacina1_idx")
+}
+
+model cartao_apadrinha {
+  id_cartao      Int
+  id_apadrinhar  Int
+  valor          Decimal        @db.Decimal(10, 0)
+  apadrinhar     apadrinhar     @relation(fields: [id_apadrinhar], references: [id_apadrinhar], onDelete: NoAction, onUpdate: NoAction, map: "fk_cartao_apadrinha_apadrinhar1")
+  cartao_usuario cartao_usuario @relation(fields: [id_cartao], references: [id_cartao], onDelete: NoAction, onUpdate: NoAction, map: "fk_cartao_apadrinha_cartao_usuario1")
+
+  @@index([id_apadrinhar], map: "fk_cartao_apadrinha_apadrinhar1_idx")
+  @@index([id_cartao], map: "fk_cartao_apadrinha_cartao_usuario1_idx")
+  @@ignore
+}
+
+model cartao_usuario {
+  id_cartao        Int                @id
+  id_usuario       Int
+  token            String             @db.VarChar(255)
+  ultimos_digitos  String             @db.VarChar(4)
+  nome_titular     String             @db.VarChar(100)
+  validade_mes     String             @db.VarChar(2)
+  validade_ano     String             @db.VarChar(4)
+  cartao_apadrinha cartao_apadrinha[] @ignore
+  usuario          User               @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_cartao_usuario_usuario1")
+
+  @@index([id_usuario], map: "fk_cartao_usuario_usuario1_idx")
+}
+
+model endereco {
+  id_endereco Int    @id @default(autoincrement())
+  logradouro  String @db.VarChar(100)
+  bairro      String @db.VarChar(60)
+  numero      Int
+  complemento String @db.VarChar(100)
+  cidade      String @db.VarChar(60)
+  uf          String @db.Char(2)
+  cep         String @db.VarChar(9)
+  usuario     User[]
+}
+
+model login {
+  id_login   Int    @id @default(autoincrement())
+  email      String @unique(map: "email_UNIQUE") @db.VarChar(255)
+  senha      String @db.Char(60)
+  id_usuario Int
+  usuario    User   @relation(fields: [id_usuario], references: [id_usuario], onDelete: NoAction, onUpdate: NoAction, map: "fk_login_usuario")
+
+  @@index([id_usuario], map: "fk_login_usuario_idx")
+}
+
+model permissoes {
+  id_permissoes Int    @id @default(autoincrement())
+  nome          String @db.VarChar(20)
+  adotar        Int    @db.TinyInt
+  apadrinhar    Int    @db.TinyInt
+  cadastrar     Int    @db.TinyInt
+  usuario       User[]
+}
+
+model raca {
+  idraca Int    @id @default(autoincrement())
+  nome   String @db.VarChar(45)
+  cao    cao[]
+}
+
+model vacina {
+  id_vacina          Int          @id
+  nome               String       @db.VarChar(45)
+  descricao          String       @db.VarChar(60)
+  idadde_recomendada String       @db.VarChar(20)
+  dose_unica         Int          @db.TinyInt
+  intervalo_reforco  String?      @db.VarChar(20)
+  cao_vacina         cao_vacina[]
+}

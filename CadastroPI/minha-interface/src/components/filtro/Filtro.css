@@ -13,9 +13,10 @@
   border: none;
   border-radius: 6px;
   background: transparent;
-  color: #333;
+  color: #6D3A7E;
   cursor: pointer;
   outline: none;
+  font-weight: bold;
 
   /* Remove a seta nativa */
   -webkit-appearance: none;
